@@ -2,6 +2,7 @@ package org.booleanuk.app.service;
 
 import org.booleanuk.app.ProductDto.ProductRequest;
 import org.booleanuk.app.ProductDto.ProductResponse;
+import org.booleanuk.app.ProductDto.ProductSales;
 import org.booleanuk.app.model.Order;
 import org.booleanuk.app.model.Product;
 import org.booleanuk.app.repository.OrderRepo;
@@ -57,4 +58,14 @@ public class ProductService {
         return productRepo.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found"));
    }
+
+    public List<ProductSales> getProductSales() {
+        return productRepo.findAll().stream()
+                .map(product -> new ProductSales(
+                        product.getId(),
+                        product.getName(),
+                        product.getOrders().size()
+                ))
+                .toList();
+    }
 }

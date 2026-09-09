@@ -3,6 +3,7 @@ package org.booleanuk.app.controller;
 
 import org.booleanuk.app.ProductDto.ProductRequest;
 import org.booleanuk.app.ProductDto.ProductResponse;
+import org.booleanuk.app.ProductDto.ProductSales;
 import org.booleanuk.app.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -42,5 +43,10 @@ public class ProductController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
         productService.delete(id);
+    }
+
+    @GetMapping("products/sales")
+    public List<ProductSales> getProductSales() {
+        return productService.getProductSales();
     }
 }
