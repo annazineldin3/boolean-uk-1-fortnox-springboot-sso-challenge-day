@@ -8,6 +8,7 @@ import org.booleanuk.app.model.Product;
 import org.booleanuk.app.repository.CustomerRepo;
 import org.booleanuk.app.repository.OrderRepo;
 import org.booleanuk.app.repository.ProductRepo;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -77,5 +78,11 @@ public class OrderService {
     private Customer findCustomer(Long customerId) {
         return customerRepo.findById(customerId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
+    }
+
+    public List<OrderResponse> getAllOrderedByValue() {
+        return orderRepo.findAll(Sort.by(Sort.Direction.DESC, "totalAmount")).stream()
+                .map(OrderResponse::fromEntity)
+                .toList();
     }
 }

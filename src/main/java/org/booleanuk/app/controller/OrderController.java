@@ -42,4 +42,9 @@ public class OrderController {
     public void delete(@PathVariable Long id) {
         orderService.delete(id);
     }
+
+    @GetMapping("orders/value")
+    public List<OrderResponse> getAllOrderedByValue() {
+        return orderService.getAllOrderedByValue();
+    }
 }
