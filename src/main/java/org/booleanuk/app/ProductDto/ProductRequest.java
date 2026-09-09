@@ -1,4 +1,4 @@
-package org.booleanuk.app.dto;
+package org.booleanuk.app.ProductDto;
 
 import java.math.BigDecimal;
 

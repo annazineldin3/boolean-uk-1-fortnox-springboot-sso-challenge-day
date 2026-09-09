@@ -1,8 +1,8 @@
 package org.booleanuk.app.controller;
 
 
-import org.booleanuk.app.dto.ProductRequest;
-import org.booleanuk.app.dto.ProductResponse;
+import org.booleanuk.app.ProductDto.ProductRequest;
+import org.booleanuk.app.ProductDto.ProductResponse;
 import org.booleanuk.app.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
