@@ -1,6 +1,5 @@
 package org.booleanuk.app.controller;
 
-import org.apache.coyote.Response;
 import org.booleanuk.app.CustomerDto.CustomerRequest;
 import org.booleanuk.app.CustomerDto.CustomerResponse;
 import org.booleanuk.app.CustomerDto.CustomerValueResponse;
