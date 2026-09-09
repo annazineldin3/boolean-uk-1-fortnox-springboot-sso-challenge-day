@@ -3,6 +3,7 @@ package org.booleanuk.app.controller;
 import org.apache.coyote.Response;
 import org.booleanuk.app.CustomerDto.CustomerRequest;
 import org.booleanuk.app.CustomerDto.CustomerResponse;
+import org.booleanuk.app.CustomerDto.CustomerValueResponse;
 import org.booleanuk.app.model.Customer;
 import org.booleanuk.app.service.CustomerService;
 import org.springframework.http.HttpStatus;
@@ -15,23 +16,23 @@ import java.util.List;
 public class CustomerController {
     private CustomerService customerService;
 
-    public CustomerController(CustomerService customerService){
+    public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
     @GetMapping
-    public List<CustomerResponse> getAll(){
+    public List<CustomerResponse> getAll() {
         return customerService.getAll();
     }
 
     @GetMapping("/{id}")
-    public CustomerResponse getById(@PathVariable Long id){
+    public CustomerResponse getById(@PathVariable Long id) {
         return customerService.getById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CustomerResponse create(@RequestBody CustomerRequest request){
+    public CustomerResponse create(@RequestBody CustomerRequest request) {
         return customerService.create(request);
     }
 
@@ -45,7 +46,13 @@ public class CustomerController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
         customerService.delete(id);
+    }
+
+    @GetMapping("/values")
+    public List<CustomerValueResponse> getCustomerValues() {
+        return customerService.getCustomerValues();
+
     }
 }
